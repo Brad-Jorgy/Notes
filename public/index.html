@@ -1,0 +1,81 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="expressNote">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Node/Angular Note App</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#note-list 				{ margin-bottom:30px; }
+		#note-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script><!-- load angular -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/notes.js"></script> <!-- load our note service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController" background="data:image/jpeg;base64,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" style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1">
+<div class="container">
+
+	<!-- HEADER AND NOTE COUNT -->
+	<div class="jumbotron text-center">
+		<h1 style="color:maroon">Notes R Us<span class="label label-info"></span></h1>
+	</div>
+
+	<!-- FORM TO CREATE NOTES -->
+	<div class="container" style="padding-top: 5px; padding-bottom: 15px;">
+		<div id="note-form" >
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form name="formData" class="form-horizontal">
+					<fieldset>
+						<div class="row form-group">
+							<input style="color:blue" type="text" class="form-control input-lg text-center" placeholder="Title" ng-model="formData.title">
+
+							<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+							<input style="color:red" type="text" class="form-control input-lg text-center" placeholder="Note text" ng-model="formData.body">
+						</div>
+
+
+					</fieldset>
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="muxTheButton()">{{saveButtonText}}</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- NOTE LIST -->
+	<div class="list-group" id="note-list" >
+		<a ng-repeat="note in notes" class="list-group-item">
+			<small class="list-group-item-text">
+				<h3><b><span style="color:blue" ng-bind="note.title"></span></b></h3>
+
+				<h4><span style="color:red" ng-bind="note.body"></span></h4>
+				<span ng-bind="note.date | date:'mediumDate'"></span>
+				<button type="submit" class="btn btn-link btn-sm" ng-click="deleteNote(note._id)" confirmation-needed="Delete this note?"><i class="glyphicon glyphicon-trash"></i></button>
+				<button type="submit" class="btn btn-link btn-sm" ng-click="editNote(note)"><i class="glyphicon glyphicon-edit"></i>Edit</button>
+				key/id: <span ng-bind="note._id".</span>
+			</small>
+		</a>
+	</div>
+</div>
+
+
+
+</div>
+
+</body>
+</html>
